@@ -27,7 +27,5 @@ while True:
 
     labyrinthe1.add_item(macgyver.position, " ")
     usr_input = input("Faites bouger Macgyver: ")
-    macgyver.move(usr_input)
-    labyrinthe1.add_item(macgyver.position, "X")
-    os.system('clear')
+    macgyver.move(usr_input, labyrinthe1)
     labyrinthe1.print_laby()

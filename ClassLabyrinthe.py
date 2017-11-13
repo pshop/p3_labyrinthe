@@ -38,7 +38,7 @@ class Labyrinthe:
 
     #I give coordonates, i get an item_pos
     def search_coord(self, coord):
-        return self.laby[coord[0]][coor[1]]
+        return self.laby[coord[0]][coord[1]]
 
 
     #I give coordonates item_pos and i put the char item_name
@@ -52,9 +52,6 @@ class Labyrinthe:
             for sprite in line:
                 print(sprite, end = "")
             print()
-
-    def chk_next(self, position):
-        pass
 
 
 if __name__ == "__main__":
