@@ -20,6 +20,9 @@ class Labyrinthe:
                     items_coordonates.append(pos)
         return items_coordonates
 
+    def add_item(self,item_pos, item_name):
+        self.laby[item_pos[0]][item_pos[1]] = item_name[0]
+
     @property
     def empy_spaces(self):
         return self.search_items(" ")
@@ -39,6 +42,7 @@ class Labyrinthe:
             for sprite in line:
                 print(sprite, end = "")
             print()
+
 
 if __name__ == "__main__":
     pass
