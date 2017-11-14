@@ -17,20 +17,27 @@ ether = Item(labyrinthe1.empy_spaces, "ether")
 labyrinthe1.add_item(ether.position, ether.name)
 ###############
 
-#j'affiche une première fois le labyrinthe
+#i print the labyrinthe on it's first state
 labyrinthe1.print_laby()
 
 ########################################
 
 
 while True:
-    # labyrinthe1.add_item(macgyver.position, " ")
-    # usr_input = input("Faites bouger Macgyver: ")
-    # next_item = macgyver.check_item(labyrinthe1, usr_input)
-    # if next_item != "O":
-    #     next_position = macgyver.next_pos(macgyver.position, usr_input)
-    #     macgyver.move(next_item, next_position, labyrinthe1)
-    # labyrinthe1.print_laby()
 
+    #i ask the user where to move
+    print("Inventaire : ", macgyver.bag)
     usr_input = input("Faites bouger Macgyver: ")
-    
+    #i take the current maggy pos
+    maggy_pos = labyrinthe1.macgyver_coord
+
+    #now i take the next_item AND the next_pos
+    next_item, next_coord = macgyver.check_item(maggy_pos, labyrinthe1, usr_input)
+
+    #if there is a next item (means not out of bound)
+    #if the item is not a wall
+    if next_item and next_item != "O":
+        macgyver.move(next_item, next_coord, maggy_pos, labyrinthe1)
+        
+    #i print the new state of the laby
+    labyrinthe1.print_laby()

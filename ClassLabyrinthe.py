@@ -38,7 +38,10 @@ class Labyrinthe:
 
     #I give coordonates, i get an item_pos
     def search_coord(self, coord):
-        return self.laby[coord[0]][coord[1]]
+        if coord:
+            return self.laby[coord[0]][coord[1]]
+        else:
+            return False
 
 
     #I give coordonates item_pos and i put the char item_name
