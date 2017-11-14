@@ -14,6 +14,8 @@ class Macgyver(Perso):
 
     position = property(_get_position, _set_position)
 
+    #maggy moves, puts items on his bag errage the X on its previous#
+    #place and add a new X on the new place
     def move(self, next_item, next_position,maggy_pos, laby):
 
         if next_item == "T" or next_item == "E" or next_item == "A":
@@ -21,7 +23,8 @@ class Macgyver(Perso):
         laby.add_item(maggy_pos," ")
         laby.add_item(next_position, "X")
 
-
+    #check on the next position the item maggy will meet
+    #returns the item and the coord of the next pos
     def check_item(self, position, laby, usr_input):
 
         if usr_input == "u" and position[0] > 0:
