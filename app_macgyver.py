@@ -24,8 +24,13 @@ labyrinthe1.print_laby()
 
 
 while True:
+    # labyrinthe1.add_item(macgyver.position, " ")
+    # usr_input = input("Faites bouger Macgyver: ")
+    # next_item = macgyver.check_item(labyrinthe1, usr_input)
+    # if next_item != "O":
+    #     next_position = macgyver.next_pos(macgyver.position, usr_input)
+    #     macgyver.move(next_item, next_position, labyrinthe1)
+    # labyrinthe1.print_laby()
 
-    labyrinthe1.add_item(macgyver.position, " ")
     usr_input = input("Faites bouger Macgyver: ")
-    macgyver.move(usr_input, labyrinthe1)
-    labyrinthe1.print_laby()
+    
