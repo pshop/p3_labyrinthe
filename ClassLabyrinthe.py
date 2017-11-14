@@ -19,7 +19,7 @@ class Labyrinthe:
 
     @property
     def exit_coord(self):
-        return self.search_items("E")
+        return self.search_items("S")
 
     #I give an item i get coordonates
     def search_items(self, item):
@@ -43,7 +43,6 @@ class Labyrinthe:
         else:
             return False
 
-
     #I give coordonates item_pos and i put the char item_name
     #at this place
     def add_item(self,item_pos, item_name):
@@ -55,7 +54,3 @@ class Labyrinthe:
             for sprite in line:
                 print(sprite, end = "")
             print()
-
-
-if __name__ == "__main__":
-    pass
