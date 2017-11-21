@@ -1,4 +1,4 @@
-from ClassPerso import *
+from ClassPerso import Perso
 
 class Macgyver(Perso):
 

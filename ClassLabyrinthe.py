@@ -5,9 +5,7 @@ class Labyrinthe:
     def __init__(self, file, key):
         #load the labyrinthe from a json external file
         with open(file) as f:
-            data = json.load(f)
-            for entry in data:
-                self.laby = entry[key]
+            self.laby = json.load(f)
 
     @property
     def empy_spaces(self):
@@ -36,8 +34,9 @@ class Labyrinthe:
         else:
             return items_coordonates
 
-    #I give coordonates, i get an item_pos
+
     def search_coord(self, coord):
+        """I give coordonates, i get an item_pos"""
         if coord:
             return self.laby[coord[0]][coord[1]]
         else:
