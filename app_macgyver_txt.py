@@ -5,8 +5,6 @@ from ClassItem import Item
 from ClassMacgyver import Macgyver
 from ClassPerso import Perso
 
-# METHOD INIT
-
 
 class AppText:
 
@@ -60,5 +58,5 @@ class AppText:
             print("Le gardien a raison de vous, vous avez PERDU !")
 
 
-new_game = AppText()
-new_game.start_app()
+#new_game = AppText()
+# new_game.start_app()
