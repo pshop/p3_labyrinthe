@@ -19,6 +19,10 @@ class Labyrinthe:
     def exit_coord(self):
         return self.search_items("S")
 
+    @property
+    def tab_laby(self):
+        return self.laby
+
     #I give an item i get coordonates
     def search_items(self, item):
         items_coordonates = []

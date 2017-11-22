@@ -27,16 +27,19 @@ class Macgyver(Perso):
     #returns the item and the coord of the next pos
     def check_item(self, position, laby, usr_input):
 
-        if usr_input == "u" and position[0] > 0:
-            coord = (position[0] - 1, position[1])
-        elif usr_input == "d" and position[0] < 14:
-            coord = (position[0] + 1, position[1])
-        elif usr_input == "l" and position[1] > 0:
-            coord = (position[0], position[1] - 1)
-        elif usr_input == "r" and position[1] < 14:
-            coord = (position[0], position[1] + 1)
-        else:
-            print("{} n'est pas une commande valide".format(usr_input))
-            coord = False
+        if usr_input:
+            if usr_input == "u" and position[0] > 0:
+                coord = (position[0] - 1, position[1])
+            elif usr_input == "d" and position[0] < 14:
+                coord = (position[0] + 1, position[1])
+            elif usr_input == "l" and position[1] > 0:
+                coord = (position[0], position[1] - 1)
+            elif usr_input == "r" and position[1] < 14:
+                coord = (position[0], position[1] + 1)
+            else:
+                print("{} n'est pas une commande valide".format(usr_input))
+                coord = False
 
-        return laby.search_coord(coord), coord
+            return laby.search_coord(coord), coord
+        else:
+            return False, False
