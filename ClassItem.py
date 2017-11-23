@@ -1,5 +1,4 @@
 import random
-####from ClassLabyrinthe import *
 
 class Item:
 

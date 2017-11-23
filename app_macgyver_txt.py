@@ -11,7 +11,7 @@ class AppText:
     def __init__(self):
 
         # #### INITIALISATION DU JEU ############
-        self.labyrinthe1 = Labyrinthe("laby_setup.json", "laby")
+        self.labyrinthe1 = Labyrinthe("laby_setup.json")
         # # verifier si j'utilise bien la position de macgiver
         self.macgyver = Macgyver(self.labyrinthe1.macgyver_coord)
         self.gardien = Perso(self.labyrinthe1.exit_coord)
@@ -53,10 +53,10 @@ class AppText:
 
         if len(self.macgyver.bag) == 3:
 
-            print("BRAVO ! vous avez gagné")
+            print("BRAVO ! vous avez gagné\n\n")
         else:
-            print("Le gardien a raison de vous, vous avez PERDU !")
+            print("Le gardien a raison de vous, vous avez PERDU !\n\n")
 
 
-#new_game = AppText()
+# new_game = AppText()
 # new_game.start_app()

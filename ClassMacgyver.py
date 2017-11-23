@@ -6,6 +6,8 @@ class Macgyver(Perso):
         Perso.__init__(self, position)
         self.bag = []
 
+    # not necessarily usefull but i thought it would fix an issue
+    # Spoiler alert, it didn't
     def _get_position(self):
         return self._position
 
@@ -14,9 +16,9 @@ class Macgyver(Perso):
 
     position = property(_get_position, _set_position)
 
-    #maggy moves, puts items on his bag errage the X on its previous#
-    #place and add a new X on the new place
     def move(self, next_item, next_position,maggy_pos, laby):
+        """ maggy moves, puts items on his bag errase the X on its previous
+        place and add a new X on the new place """
 
         if next_item == "T" or next_item == "E" or next_item == "A":
             self.bag.append(next_item)
@@ -26,7 +28,8 @@ class Macgyver(Perso):
     #check on the next position the item maggy will meet
     #returns the item and the coord of the next pos
     def check_item(self, position, laby, usr_input):
-
+        """ checks on the next position the item maggy will meet
+        returns the item and the coord of the next pos"""
         if usr_input:
             if usr_input == "u" and position[0] > 0:
                 coord = (position[0] - 1, position[1])
