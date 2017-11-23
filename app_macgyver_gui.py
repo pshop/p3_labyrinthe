@@ -7,13 +7,14 @@ from ClassItem import Item
 from ClassMacgyver import Macgyver
 from ClassPerso import Perso
 
+
 class AppGUI:
 
     def __init__(self):
         pygame.init()
         self.fenetre = pygame.display.set_mode((600, 600))
 
-        ###IMAGES
+        # ##IMAGES
         self.fond_img = pygame.image.load("./img/fond.png").convert()
         self.maggy_img = pygame.image.load("./img/maggy-2.png").convert_alpha()
         self.guard_img = pygame.image.load("./img/gardien.png").convert_alpha()
@@ -24,7 +25,7 @@ class AppGUI:
         self.gameover_img = pygame.image.load("./img/go.jpeg").convert()
         self.win_img = pygame.image.load("./img/win.png").convert()
 
-        ##### INITIALISATION DU JEU ############
+        # #### INITIALISATION DU JEU ############
         self.labyrinthe1 = Labyrinthe("laby_setup.json")
         # # verifier si j'utilise bien la position de macgiver
         self.macgyver = Macgyver(self.labyrinthe1.macgyver_coord)
@@ -44,7 +45,7 @@ class AppGUI:
         self.ether = Item(self.labyrinthe1.empy_spaces, "ether")
         self.labyrinthe1.add_item(self.ether.position, self.ether.name)
         self.pos_eth = self.to_gui_scale(self.ether.position)
-        #########################################
+        # ########################################
 
     def to_gui_scale(self, position):
         new_pos = []
@@ -58,7 +59,7 @@ class AppGUI:
 
             usr_input = False
             next_item = False
-            next_coord = [0,0]
+            next_coord = [0, 0]
             self.fenetre.blit(self.fond_img, (0, 0))
 
             for event in pygame.event.get():
@@ -79,7 +80,7 @@ class AppGUI:
                     next_item, next_coord = self.macgyver.check_item(maggy_tab_pos, self.labyrinthe1, usr_input)
 
             if next_item == "S":
-                continuer = 0
+                continuer = self.end_game()
             # if there is a next item (means not out of bound)
             # if the item is not a wall
             if next_item and next_item != "O":
@@ -102,12 +103,21 @@ class AppGUI:
                 self.fenetre.blit(self.eth_img, self.pos_eth)
             pygame.display.flip()
 
-        if len(self.macgyver.bag) == 3:
-            self.fenetre.blit(self.gameover_img, (0, 0))
-        else:
-            self.fenetre.blit(self.win_img, (0, 0))
-        pygame.display.flip()
+    def end_game(self):
+        continuer = 1
+        while continuer:
+
+            for event in pygame.event.get():
+                if event.type == QUIT:
+                    continuer = 0
+
+            if len(self.macgyver.bag) == 3:
+                self.fenetre.blit(self.win_img, (0, 0))
+            else:
+                self.fenetre.blit(self.gameover_img, (0, 0))
+            pygame.display.flip()
+        return continuer
 
 
-gui_session = AppGUI()
-gui_session.start_GUI_app()
+# gui_session = AppGUI()
+# gui_session.start_GUI_app()

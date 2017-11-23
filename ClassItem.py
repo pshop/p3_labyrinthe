@@ -1,5 +1,6 @@
 import random
 
+
 class Item:
 
     def __init__(self, empty_spaces, name):
