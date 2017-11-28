@@ -1,3 +1,6 @@
+#! /usr/bin/env python3
+# coding: utf-8
+
 import pygame
 import os
 
@@ -119,5 +122,5 @@ class AppGUI:
         return continuer
 
 
-# gui_session = AppGUI()
-# gui_session.start_GUI_app()
+gui_session = AppGUI()
+gui_session.start_GUI_app()
