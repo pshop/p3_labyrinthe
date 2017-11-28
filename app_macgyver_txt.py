@@ -39,6 +39,8 @@ class AppText:
             print("Inventaire : ", self.macgyver.bag)
             # 'q' pour quitter
             usr_input = input("Faites bouger Macgyver: ")
+            if usr_input == 'q' or usr_input == 'quit':
+                break
             # i take the current maggy pos
             maggy_pos = self.labyrinthe1.macgyver_coord
             # now i take the next_item AND the next_pos
@@ -54,12 +56,16 @@ class AppText:
 
         os.system("clear")
 
-        if len(self.macgyver.bag) == 3:
-
+        if usr_input == 'q' or usr_input == 'quit':
+            print('A dieu')
+        elif len(self.macgyver.bag) == 3:
             print("BRAVO ! vous avez gagné\n\n")
         else:
             print("Le gardien a raison de vous, vous avez PERDU !\n\n")
 
+def main():
+    new_game = AppText()
+    new_game.start_app()
 
-# new_game = AppText()
-# new_game.start_app()
+if __name__ == '__main__':
+    main()

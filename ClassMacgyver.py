@@ -29,8 +29,6 @@ class Macgyver(Perso):
         laby.add_item(maggy_pos, " ")
         laby.add_item(next_position, "X")
 
-    # check on the next position the item maggy will meet
-    # returns the item and the coord of the next pos
     def check_item(self, position, laby, usr_input):
         """ checks on the next position the item maggy will meet
         returns the item and the coord of the next pos"""
