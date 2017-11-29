@@ -15,7 +15,7 @@ class AppText:
 
         # #### INITIALISATION DU JEU ############
         self.labyrinthe1 = Labyrinthe("laby_setup.json")
-        # # verifier si j'utilise bien la position de macgiver
+        
         self.macgyver = Macgyver(self.labyrinthe1.macgyver_coord)
         self.gardien = Perso(self.labyrinthe1.exit_coord)
 
