@@ -40,7 +40,7 @@ class Labyrinthe:
         for line_nb, line_value in enumerate(self.laby):
             for sprite_nb, sprite_value in enumerate(line_value):
                 pos = [line_nb, sprite_nb]
-                # if the pos is free, i fell the empty_coordonates
+                # if the pos is free, i fill the empty_coordonates
                 if sprite_value == item:
                     items_coordonates.append(pos)
         if len(items_coordonates) == 1:
