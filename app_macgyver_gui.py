@@ -15,9 +15,11 @@ class AppGUI:
 
     def __init__(self):
         pygame.init()
+
+        # i initiate a 600*600 window
         self.fenetre = pygame.display.set_mode((600, 600))
 
-        # ##IMAGES
+        # I set all the images
         self.fond_img = pygame.image.load("./img/fond.png").convert()
         self.maggy_img = pygame.image.load("./img/maggy-2.png").convert_alpha()
         self.guard_img = pygame.image.load("./img/gardien.png").convert_alpha()
@@ -28,12 +30,14 @@ class AppGUI:
         self.gameover_img = pygame.image.load("./img/go.jpeg").convert()
         self.win_img = pygame.image.load("./img/win.png").convert()
 
-        # #### INITIALISATION DU JEU ############
+        # The list used as a model for the labyrinthe is set up
         self.labyrinthe1 = Labyrinthe("laby_setup.json")
-        # # verifier si j'utilise bien la position de macgiver
+        # initiate Maggy and give him his position set in the json
         self.macgyver = Macgyver(self.labyrinthe1.macgyver_coord)
+        # get the maggy's position to the scale of the graphic interface
         self.pos_maggy = self.to_gui_scale(self.macgyver.position)
 
+        # mainly the same for the last lines of the __init__
         self.gardien = Perso(self.labyrinthe1.exit_coord)
         self.pos_guard = self.to_gui_scale(self.labyrinthe1.exit_coord)
 
@@ -48,15 +52,17 @@ class AppGUI:
         self.ether = Item(self.labyrinthe1.empy_spaces, "ether")
         self.labyrinthe1.add_item(self.ether.position, self.ether.name)
         self.pos_eth = self.to_gui_scale(self.ether.position)
-        # ########################################
 
     def to_gui_scale(self, position):
+        """ give an position in the laby's list, get coordonates equivalent
+        in the GUI window """
         new_pos = []
         for i in position:
             new_pos.insert(0, i * 40)
         return new_pos
 
     def start_GUI_app(self):
+        """ Simply starts the game in graphic mod """
         continuer = 1
         while continuer:
 
@@ -78,24 +84,30 @@ class AppGUI:
                     if event.key == K_LEFT:
                         usr_input = 'l'
 
+                    # i get maggy pos in the laby's list
                     maggy_tab_pos = self.labyrinthe1.macgyver_coord
                     # now i take the next_item AND the next_pos
                     next_item, next_coord = self.macgyver.check_item(maggy_tab_pos, self.labyrinthe1, usr_input)
 
+            # S is the exit
             if next_item == "S":
                 continuer = self.end_game()
             # if there is a next item (means not out of bound)
             # if the item is not a wall
             if next_item and next_item != "O":
+                # maggy moves
                 self.macgyver.move(next_item, next_coord, maggy_tab_pos, self.labyrinthe1)
+                # saves the new maggy's position
                 self.macgyver.position = next_coord
 
             for line in range(len(self.labyrinthe1.tab_laby)):
                 for column in range(len(self.labyrinthe1.tab_laby[line])):
+                    # prints the walls
                     if self.labyrinthe1.tab_laby[line][column] == 'O':
                         pos_wall = self.to_gui_scale([line, column])
                         self.fenetre.blit(self.wall_img, pos_wall)
 
+            # prints the other items
             self.fenetre.blit(self.maggy_img, self.to_gui_scale(self.macgyver.position))
             self.fenetre.blit(self.guard_img, self.pos_guard)
             if self.labyrinthe1.search_coord(self.tube.position) == 'T':
@@ -107,6 +119,7 @@ class AppGUI:
             pygame.display.flip()
 
     def end_game(self):
+        """ Checks the victory conditions and print the result """
         continuer = 1
         while continuer:
 
