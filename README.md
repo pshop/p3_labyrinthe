@@ -10,13 +10,12 @@ The game runs with python 3 and pygame.
 
 To run the game :
 
-- get python 3 https://www.python.org/ on this website and install it
-- go clone the GitHub repo in your computer
-- create a virtual environment in the repository and activate it
+- get python 3.6.3 https://www.python.org/ on this website and install it
+- clone the GitHub repo in your computer
+- create a virtual environment in the repository and activate it. Please use
+VENV rather than virtualenv.
 - install all the dependencies the game needs with:
       pip install -r requirements.txt
-- one its done you'll be able to run the game:
-      for the text version run : app_macgyver_txt.py
-      for the graphic version  : app_macgyver_gui.py
+- one its done you'll be able to run the game by running 'main.py'
 
 ENJOY
