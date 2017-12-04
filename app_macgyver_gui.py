@@ -134,6 +134,7 @@ class AppGUI:
             pygame.display.flip()
         return continuer
 
+
 def main():
     gui_session = AppGUI()
     gui_session.start_GUI_app()
